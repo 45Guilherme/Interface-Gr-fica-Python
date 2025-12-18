@@ -3,6 +3,11 @@ import customtkinter as ctk
 
 app = ctk.CTk()
 
+ctkFrame = ctk.CTkFrame(master=app)
+ctkFrame.pack(pady=20, padx=60, fill="both", expand=True)
+
+
+
 app.title("MiNI SIEM")
 texto_label = "Teste do Mini SIEM"
 app.geometry("800x500")
@@ -14,6 +19,7 @@ def analisar_logs():
     label_boa_vindas.configure(text="Status: Analisando logs...")
 
 
+ctkFrameButton = ctk.CTkButton(master=ctkFrame, text="Selecionar Arquivo de Logs")
 
 ctkButton = ctk.CTkButton(master=app, text="Analisar Logs", command=analisar_logs)
 ctkButton.pack(pady=10)
