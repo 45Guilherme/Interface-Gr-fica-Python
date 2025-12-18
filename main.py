@@ -1,3 +1,4 @@
+
 import customtkinter as ctk
 
 app = ctk.CTk()
@@ -10,7 +11,9 @@ label_boa_vindas = ctk.CTkLabel(master=app, text=texto_label, font=("Arial", 24)
 label_boa_vindas.pack(pady=20)
 
 def analisar_logs():
-    print("Analisando logs...")
+    label_boa_vindas.configure(text="Status: Analisando logs...")
+
+
 
 ctkButton = ctk.CTkButton(master=app, text="Analisar Logs", command=analisar_logs)
 ctkButton.pack(pady=10)
