@@ -20,9 +20,9 @@ def analisar_logs():
 
 
 ctkFrameButton = ctk.CTkButton(master=ctkFrame, text="Selecionar Arquivo de Logs")
+ctkFrameButton.pack(pady=10, padx=10)
 
-ctkButton = ctk.CTkButton(master=app, text="Analisar Logs", command=analisar_logs)
-ctkButton.pack(pady=10)
+
 
 
 
