@@ -28,7 +28,7 @@ def analisar_logs():
     ssh = frame_usuario_ssh.get()
     label_ssh.configure(text=f"Status: Analisando logs para o usuário SSH: {ssh}")
     if ssh == "":
-        print("Status: usuário SSH não informado")
+        print(f"Status: usuário SSH não informado.")
     else:
         print(f"Status: Analisando logs para o usuário SSH: {ssh}")
 
