@@ -31,6 +31,10 @@ def analisar_logs():
         print(f"Status: usuário SSH não informado.")
     else:
         print(f"Status: Analisando logs para o usuário SSH: {ssh}")
+    if ssh == "":
+        label_ssh.configure(text_color="red")
+    else:
+        label_ssh.configure(text_color="green")
 
 
 
