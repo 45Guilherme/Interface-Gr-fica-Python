@@ -45,12 +45,11 @@ def selecionar_arquivo():
     else:
         label_ssh.configure(text=f"Arquivo selecionado:\n{file_path}", text_color="green")
 
-        
-
-
 
 Botao = ctk.CTkButton(master=frame, text="Selecionar Arquivo de Logs", command=analisar_logs)
 Botao.pack(pady=10)
+Botao_file = ctk.CTkButton(master=frame, text="Selecionar Arquivo", command=selecionar_arquivo)
+Botao_file.pack(pady=10)
 
-
-app.mainloop()
+if __name__ == "__main__":
+    app.mainloop()
