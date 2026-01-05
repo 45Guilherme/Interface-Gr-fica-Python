@@ -1,5 +1,7 @@
 
 import customtkinter as ctk
+from tkinter import filedialog
+ctk.set_appearance_mode("dark")
 
 app = ctk.CTk()
 
@@ -35,6 +37,15 @@ def analisar_logs():
         label_ssh.configure(text_color="red")
     else:
         label_ssh.configure(text_color="green")
+
+def selecionar_arquivo():
+    file_path = filedialog.askopenfilename(title="Selecione o arquivo de logs")
+    if file_path == "":
+        label_ssh.configure(text = "Nenhum arquivo selecionado.", text_color="yellow")
+    else:
+        label_ssh.configure(text=f"Arquivo selecionado:\n{file_path}", text_color="green")
+
+        
 
 
 
