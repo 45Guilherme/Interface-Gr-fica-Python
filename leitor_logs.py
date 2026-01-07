@@ -15,10 +15,13 @@ def ler_logs(selecionar_arquivo):
     cont = {}
 
     with open(selecionar_arquivo, 'r') as file:
-        logs = file.readlines()
-
-        for linha in logs:
+        for linha in file:
             partes = linha.split()
+
+            # 🔒 PROTEÇÃO
+            if len(partes) < 5:
+                continue
+
             ip = partes[3]
             status = partes[4]
 
@@ -29,6 +32,7 @@ def ler_logs(selecionar_arquivo):
                     cont[ip] = 1
 
     return cont
+
 
 
 
