@@ -3,6 +3,7 @@ import customtkinter as ctk
 from tkinter import filedialog
 from leitor_logs import ler_logs
 from detector_log import detectar_ataques
+from historico_ataques import salvar_historico
 ctk.set_appearance_mode("dark")
 
 app = ctk.CTk()
