@@ -2,6 +2,7 @@
 import customtkinter as ctk
 from tkinter import filedialog
 from leitor_logs import ler_logs
+from detector_log import detectar_ataques
 ctk.set_appearance_mode("dark")
 
 app = ctk.CTk()
@@ -44,7 +45,7 @@ def selecionar_arquivo():
     if file_path == "":
         label_ssh.configure(text = "Nenhum arquivo selecionado.", text_color="yellow")
     else:
-        label_ssh.configure(text=f"Arquivo selecionado:\n{ler_logs}", text_color="green")
+        label_ssh.configure(text=f"Arquivo selecionado:\n{file_path}", text_color="green")
 
 
 Botao = ctk.CTkButton(master=frame, text="Selecionar Arquivo de Logs", command=analisar_logs)
