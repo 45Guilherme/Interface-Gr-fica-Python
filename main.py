@@ -47,11 +47,20 @@ def selecionar_arquivo():
     else:
         label_ssh.configure(text=f"Arquivo selecionado:\n{file_path}", text_color="green")
 
+def detectar_logs():
+    contador_ips = ler_logs()
+    ataques = detectar_ataques(contador_ips)
+    if ataques:
+        label_ssh.configure(text=f"Ataques detectados:\n{ataques}", text_color="red")
+    else:
+        label_ssh.configure(text="Nenhum ataque detectado.", text_color="green")
 
 Botao = ctk.CTkButton(master=frame, text="Selecionar Arquivo de Logs", command=analisar_logs)
 Botao.pack(pady=10)
 Botao_file = ctk.CTkButton(master=frame, text="Selecionar Arquivo", command=selecionar_arquivo)
 Botao_file.pack(pady=10)
+Botao_detectar = ctk.CTkButton(master=frame, text="Detectar Ataques", command=detectar_logs)
+Botao_detectar.pack(pady=10)
 
 if __name__ == "__main__":
     app.mainloop()
