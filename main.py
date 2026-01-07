@@ -50,6 +50,15 @@ def selecionar_arquivo():
     else:
         label_ssh.configure(text=f"Arquivo selecionado:\n{file_path}", text_color="green")
 
+def formatar_ataques(ataques):
+    texto = "🚨 ATAQUES DETECTADOS 🚨\n\n"
+    for ip, tentativas in ataques.items():
+        texto += f"IP: {ip}\n"
+        texto += f"Tentativas: {tentativas}\n\n"
+    return texto
+
+
+
 def detectar_logs():
     if not file_path:
         label_ssh.configure(
@@ -63,7 +72,7 @@ def detectar_logs():
 
     if ataques:
         label_ssh.configure(
-            text=f"Ataques detectados:\n{ataques}",
+            text=f"Ataques detectados:\n{formatar_ataques(ataques)}",
             text_color="red"
         )
     else:
