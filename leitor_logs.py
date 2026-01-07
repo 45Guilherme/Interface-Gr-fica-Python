@@ -11,20 +11,25 @@ with open('leitor_logs.txt', 'w')as file:
     file.write("2026-01-05 10:16:48 IP 203.0.113.120 ACCESS_DENIED\n")
 
 
-def ler_logs():
-    with open('leitor_logs.txt', 'r') as file:
-        cont = {}
+def ler_logs(selecionar_arquivo):
+    cont = {}
+
+    with open(selecionar_arquivo, 'r') as file:
         logs = file.readlines()
+
         for linha in logs:
             partes = linha.split()
-            ip = partes[2]
-            status = partes[3]
+            ip = partes[3]
+            status = partes[4]
+
             if status == "ACCESS_DENIED":
                 if ip in cont:
                     cont[ip] += 1
                 else:
                     cont[ip] = 1
-        return cont
+
+    return cont
+
 
 
 

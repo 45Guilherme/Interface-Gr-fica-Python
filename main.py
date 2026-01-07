@@ -8,6 +8,7 @@ ctk.set_appearance_mode("dark")
 app = ctk.CTk()
 
 app.title("MiNI SIEM")
+file_path = None
 texto_label = "Teste do Mini SIEM"
 app.geometry("800x500")
 
@@ -41,19 +42,36 @@ def analisar_logs():
         label_ssh.configure(text_color="green")
 
 def selecionar_arquivo():
+    global file_path
     file_path = filedialog.askopenfilename(title="Selecione o arquivo de logs")
     if file_path == "":
         label_ssh.configure(text = "Nenhum arquivo selecionado.", text_color="yellow")
+        file_path = None
     else:
         label_ssh.configure(text=f"Arquivo selecionado:\n{file_path}", text_color="green")
 
 def detectar_logs():
-    contador_ips = ler_logs()
+    if not file_path:
+        label_ssh.configure(
+            text="Selecione um arquivo de logs primeiro!",
+            text_color="red"
+        )
+        return
+
+    contador_ips = ler_logs(file_path)
     ataques = detectar_ataques(contador_ips)
+
     if ataques:
-        label_ssh.configure(text=f"Ataques detectados:\n{ataques}", text_color="red")
+        label_ssh.configure(
+            text=f"Ataques detectados:\n{ataques}",
+            text_color="red"
+        )
     else:
-        label_ssh.configure(text="Nenhum ataque detectado.", text_color="green")
+        label_ssh.configure(
+            text="Nenhum ataque detectado.",
+            text_color="green"
+        )
+
 
 Botao = ctk.CTkButton(master=frame, text="Selecionar Arquivo de Logs", command=analisar_logs)
 Botao.pack(pady=10)
